@@ -7,10 +7,12 @@
 #SOHO(Solar and Heliospheric Observatory), currently orbiting the Earth-Sun
 #Lagrangian Point L1. The SOHO measures velocity and magnetic fields
 #in the Sun's photosphere.
-#This script converts MDI number (used to keep track of batches of data dumps)
-#to YYMMDD date and vice versa,allowing for aid in calculation, quick reference
-#to either value, or aid in further processing. 
-#Takes an optional second argument with MDI number, daterange length
+#This script converts the 4-digit MDI number (used to keep track of batches
+#of data dumps), to YYMMDD date and vice versa,allowing for aid in calculation,
+#quick reference to either value, or aid in further processing. 
+
+#Takes arg (MDI number) and prints YYMMDD date value.
+#Takes an optional second argument with args (MDI number, daterange length)
 #and then returns the YYMMDDtoMMDD format
 
 mdistart="6328"
