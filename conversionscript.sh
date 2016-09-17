@@ -1,8 +1,16 @@
 #!/bin/bash
 
 #Ashay Vipinkumar
-#converts MDI# to YYMMDD and vice versa
-#takes an optional second argument with MDI number, daterange length
+#vipinkum@usc.edu
+
+#The MDI (Michelson Doppler Imager) is an instrument on the NASA/ESA spacecraft
+#SOHO(Solar and Heliospheric Observatory), currently orbiting the Earth-Sun
+#Lagrangian Point L1. The SOHO measures velocity and magnetic fields
+#in the Sun's photosphere.
+#This script converts MDI number (used to keep track of batches of data dumps)
+#to YYMMDD date and vice versa,allowing for aid in calculation, quick reference
+#to either value, or aid in further processing. 
+#Takes an optional second argument with MDI number, daterange length
 #and then returns the YYMMDDtoMMDD format
 
 mdistart="6328"
