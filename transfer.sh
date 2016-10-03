@@ -1,6 +1,12 @@
 #!/bin/bash
 
+echo -en "\n"
 input=$1
+if [ $# -ne "1" ]; then
+	echo "Provide daterange"
+	exit
+fi
+
 echo "raw input: "$input
 FILE=$input"dpirlrr"
 #change to DIRNAME
@@ -11,7 +17,7 @@ pwd
 
 function exist {
 	if [ -e $input* ]; then
-	   echo "ERROR: File '$FILE' Exists. Enter 1 to delete, 0 to exit. "
+	   echo "ERROR: File '$FILE' Exists in staging. Enter 1 to delete, 0 to exit. "
 	   read option
 	   if [ $option -eq 1 ]; then
 			rmdir $FILE
@@ -22,7 +28,7 @@ function exist {
 			exit
 	   fi
 	else
-	   echo "The File '$FILE' Does Not Exist. Enter 1 to create, 0 to exit. Then press [ENTER]"
+	   echo "The File '$FILE' Does Not Exist in staging. Enter 1 to create, 0 to exit. Then press [ENTER]"
 	   read option
 	   if [ $option -eq 1 ]; then
 			mkdir $FILE
@@ -35,8 +41,9 @@ function exist {
 	fi
 }
 function exist2 {
+	
 	if [ -e $input* ]; then
-	   echo "ERROR: File '$FILE' Exists."
+	   echo "ERROR: File '$FILE' Exists in rcf-93."
 	   if test "$(ls -A "$FILE")"; then
 			echo "NOT EMPTY. HUMAN OVERSIGHT REQUIRED."
 			exit
@@ -55,21 +62,39 @@ function exist2 {
 	   fi
 
 	else
-	   echo "SUCCESS: The File '$FILE' Does Not Exist. Enter 1 to continue, 0 to exit. Then press [ENTER]"
+	   echo "SUCCESS: The File '$FILE' Does Not Exist in rcf-93. Enter 1 to continue to linkage, 0 to exit. Then press [ENTER]"
 	   read option
 	   if [ $option -eq 1 ]; then
-
+			ln -s /staging/ejr/shared/data/spc/hmi/$FILE $FILE
+			echo "linked"
+			chgrp astr-ejr $FILE
+			chmod 775 $FILE
+			exit
 	   else
-
+			echo "did nothing. exiting."
 			exit
 	   fi
 	fi
 }
+
 cd /staging/ejr/shared/data/spc/hmi
 echo "Now in: "$PWD
 if [ $PWD != /staging/ejr/shared/data/spc/hmi ]; then
 	echo "ERROR:Should be /staging/ejr/shared/data/spc/hmi. Instead it is: " $PWD
 	exit
 fi
+
 exist
+
+cd /home/rcf-93/data/spc/hmi
+echo "Now in: "$PWD
+if [ $PWD != /home/rcf-93/data/spc/hmi ]; then
+	echo "ERROR:Should be /home/rcf-93/data/spc/hmi. Instead it is: " $PWD
+	exit
+fi
+
 exist2
+
+
+
+
