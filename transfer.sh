@@ -49,11 +49,11 @@ function exist2 {
 			exit
 		else
 			echo "EMPTY"
-			echo "Enter 1 to delete, 0 to exit."
+			echo "THIS NEEDS TO BE UNLINKED. ONLY CONTINUE IF YOU KNOW WHAT YOU ARE DOING. ENTER 100 to UNLINK, 0 to exit."
 			read option
-			if [ $option -eq 1 ]; then
-				rmdir $FILE
-				echo "Removed directory "$FILE
+			if [ $option -eq 100 ]; then
+				unlink $FILE
+				echo "Unlinked directory "$FILE
 				exit
 			else
 				echo "Did not delete."
@@ -62,13 +62,15 @@ function exist2 {
 	   fi
 
 	else
-	   echo "SUCCESS: The File '$FILE' Does Not Exist in rcf-93. Enter 1 to continue to linkage, 0 to exit. Then press [ENTER]"
+	   echo "SUCCESS: No variation of '$input' exists in rcf-93. Enter 1 to continue to linkage, 0 to exit. Then press [ENTER]"
 	   read option
 	   if [ $option -eq 1 ]; then
 			ln -s /staging/ejr/shared/data/spc/hmi/$FILE $FILE
 			echo "linked"
 			chgrp astr-ejr $FILE
+			echo "chgrp done"
 			chmod 775 $FILE
+			echo "chmod 775 done"
 			exit
 	   else
 			echo "did nothing. exiting."
