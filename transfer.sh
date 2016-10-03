@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#Ashay Vipinkumar
+#vipinkum@usc.edu
+
+#The MDI (Michelson Doppler Imager) is an instrument on the NASA/ESA spacecraft
+#SOHO(Solar and Heliospheric Observatory), currently orbiting the Earth-Sun
+#Lagrangian Point L1. The SOHO measures velocity and magnetic fields
+#in the Sun's photosphere.
+#This script automates several vital tasks in the data processing undertaken
+#by the Helioseismology research group headed by Dr. Edward Joseph Rhodes at
+#the USC department of Physics and Astronomy.
+
 echo -en "\n"
 input=$1
 if [ $# -ne "1" ]; then
