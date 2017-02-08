@@ -52,7 +52,7 @@ function exist {
 	fi
 }
 function exist2 {
-	
+
 	if [ -e $input* ]; then
 	   echo "ERROR: File '$FILE' Exists in rcf-93."
 	   if test "$(ls -A "$FILE")"; then
@@ -107,7 +107,3 @@ if [ $PWD != /home/rcf-93/data/spc/hmi ]; then
 fi
 
 exist2
-
-
-
-
