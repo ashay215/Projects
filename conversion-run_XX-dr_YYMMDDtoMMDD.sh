@@ -3,11 +3,10 @@
 #Ashay Vipinkumar
 #vipinkum@usc.edu
 
-cd /home/rcf-93/data/spc/hmi/convert_fits_move-scratch_PBSFILES
 echo -en "\n"
 input=$1
 if [ $# -ne "1" ]; then
-	echo "Usage: ./conversion-run_XX-dr_YYMMDDtoMMDD YYMMDDtoMMDD, where the argument is the daterange you want."
+	echo "Usage: $0 YYMMDDtoMMDD, where the argument is the daterange you want."
 	exit
 fi
 
@@ -24,5 +23,8 @@ else
 fi
 
 ./convert_fits_move-scratch-YYMMDDtoMMDD.sh $input
-
-./conversion-run_XX-dr_YYMMDDtoMMDD_check $input
+#copy the above file and rename to auto, have it call the new 3day script
+#qsubs convertpbs
+#change end of pbs file to qsub the check file, in the tempdir if statement in the 3day file
+#copy the file name and rename to .auto
+#copy over PBS file library imports from the top of 3day
